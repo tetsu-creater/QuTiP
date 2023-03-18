@@ -26,9 +26,14 @@ H = [[Hc, fc], [Hq, fq]] # total Hamiltonian
 
 _, gs_Hc = Hc.groundstate()
 
-# 0から1までを0.01づつ
+# 0から1までを0.1づつ
 tlist = np.linspace(0.0, tau, 101)
 result_sesolve = sesolve(H, psi0, tlist, [ket2dm(gs_Hc)])
 
-print(result_sesolve)
-
+plt.plot(result_sesolve.times, result_sesolve.expect[0])
+plt.xlim(0.,10.)
+plt.ylim(0.,1.)
+plt.xlabel("t")
+plt.ylabel("Probability of GS of Hc")
+plt.minorticks_on()
+plt.show()
