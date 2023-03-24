@@ -45,7 +45,7 @@ H = [[Hc, fc], [Hq, fq]] # total Hamiltonian
 H0 = Hc + (3 / math.sqrt(1)) * Hq
 _, gs_H0 = H0.groundstate()
 
-tlist = np.arange(1.0, tau-1, 0.01)
+tlist = np.arange(0., tau-1, 0.01)
 result_sesolve = sesolve(H, gs_H0, tlist, [ket2dm(gs_Hc)])
 
 plt.plot(result_sesolve.times, result_sesolve.expect[0])
